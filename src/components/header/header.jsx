@@ -1,5 +1,5 @@
 import React from 'react';
-import Tasks from './task';
+import TasksContainer from './task_container';
 
 class Header extends React.Component {
 
@@ -13,7 +13,7 @@ class Header extends React.Component {
       <ul className='header-list'>
         <li>
           <h3 className='header'>To be Completed</h3>
-          <Tasks/>
+          <TasksContainer/>
         </li>
         <li>To be Reviewed</li>
         <li>Completed</li>

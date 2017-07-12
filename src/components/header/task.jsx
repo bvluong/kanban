@@ -1,24 +1,50 @@
 import React from 'react';
+import TaskDetail from './task_detail';
+import { values } from 'lodash';
 
 class Tasks extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { addTask: false};
+    this.state = {
+      addTask: false,
+      newTask: ""
+    };
   }
 
   addHandler(e) {
-    e.preventDefault();
     this.setState({addTask: true});
   }
 
+  updateHandler(e) {
+    e.preventDefault();
+    this.setState({newTask: e.currentTarget.value});
+  }
+
+  submitHandler(e) {
+    e.preventDefault();
+    this.props.addTask({task: this.state.newTask});
+    this.setState({newTask: ""});
+  }
+
+  mapTask() {
+    console.log(this.props.tasks);
+    return values(this.props.tasks)
+      .map( (task,idx) => <TaskDetail task={task} key={idx}/> );
+  }
+
   render() {
-    const taskInputForm = <textarea className="input-task"></textarea>;
+    const taskInputForm =
+      <form onSubmit={this.submitHandler.bind(this)}>
+        <textarea className="input-task"
+          onChange={this.updateHandler.bind(this)}
+          value={this.state.newTask}>
+        </textarea>
+        <input type="submit"></input>
+      </form>;
     return (
       <div className='tasks'>
         <ul className='tasks-lists'>
-          <li>
-            Do this
-          </li>
+          {this.mapTask()}
           <li onClick={this.addHandler.bind(this)}>
             Add a task!
           </li>
