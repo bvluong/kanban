@@ -3,12 +3,16 @@ import Tasks from './task';
 
 class Header extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   render () {
     return (
     <div className='main-header'>
-      <ul>
+      <ul className='header-list'>
         <li>
-          <h3>To be Completed</h3>
+          <h3 className='header'>To be Completed</h3>
           <Tasks/>
         </li>
         <li>To be Reviewed</li>
