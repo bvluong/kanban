@@ -22,13 +22,15 @@ class Tasks extends React.Component {
 
   submitHandler(e) {
     e.preventDefault();
-    this.props.addTask({task: this.state.newTask});
+
+    this.props.addTask({
+      headerId: this.props.headerId,
+      task: this.state.newTask});
     this.setState({newTask: ""});
   }
 
   mapTask() {
-    console.log(this.props.tasks);
-    return values(this.props.tasks)
+    return values(this.props.tasks[this.props.headerId])
       .map( (task,idx) => <TaskDetail task={task} key={idx}/> );
   }
 

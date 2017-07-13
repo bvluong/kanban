@@ -13,10 +13,16 @@ class Header extends React.Component {
       <ul className='header-list'>
         <li>
           <h3 className='header'>To be Completed</h3>
-          <TasksContainer/>
+          <TasksContainer headerId={1}/>
         </li>
-        <li>To be Reviewed</li>
-        <li>Completed</li>
+        <li>
+          <h3 className='header'>To be Reviewed</h3>
+          <TasksContainer headerId={2}/>
+        </li>
+        <li>
+          <h3 className='header'>Completed</h3>
+          <TasksContainer headerId={3}/>
+        </li>
       </ul>
     </div>
     );
