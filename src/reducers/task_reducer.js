@@ -12,8 +12,6 @@ const taskReducer = (state = defaultState, action) => {
   switch (action.type) {
     case RECEIVE_TASK:
       let newState = merge({}, state);
-      console.log(newState);
-      console.log(action);
       newState[action.task.headerId].push(action.task.task);
       return newState;
     default:
